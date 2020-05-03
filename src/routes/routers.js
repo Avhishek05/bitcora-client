@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
-import Login from "../components/Login/login"
+import LoginUser from "../components/Login/login"
 
 const routesConfig = [
     {
         path: "/",
-        component: Login,
+        component: LoginUser,
         name: "Login",
         exact: true
     }

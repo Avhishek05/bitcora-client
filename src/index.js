@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import AppBootUp from "./container/app-boot";
+import 'antd/dist/antd.css';
 
 ReactDOM.render(
   <React.StrictMode>
