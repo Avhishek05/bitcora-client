@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="36" viewBox="0 0 40 36">
+  <g id="Add_Product" data-name="Add Product" transform="translate(17158 11929)">
+    <g id="Group_3530" data-name="Group 3530" transform="translate(-18504 -12319)">
+      <path id="Path_951" data-name="Path 951" d="M1.778,0H38.222A1.789,1.789,0,0,1,40,1.8V34.2A1.789,1.789,0,0,1,38.222,36H1.778A1.789,1.789,0,0,1,0,34.2V1.8A1.789,1.789,0,0,1,1.778,0Z" transform="translate(1346 390)" fill="#7f8c8d"/>
+    </g>
+    <g id="Group_3531" data-name="Group 3531" transform="translate(-18484 -12188)">
+      <path id="Subtraction_11" data-name="Subtraction 11" d="M18653,11882.816h0l-.908-.412-9.09-4.133v-12.727l1.1-.5,8.9-4.049,8.9,4.044,1.1.5v5.253h-1.818v-3.43l-7.271,3.308v9.732l2.947-1.339v1.994l-2.947,1.341-.91.412Zm-8.182-15.449h0v9.736l7.273,3.3v-9.732l-7.273-3.308ZM18653,11863l-6.705,3.051,6.705,3.045,6.705-3.045Z" transform="translate(-17307 -11595)" fill="#fff"/>
+      <path id="Icon_material-playlist-add" data-name="Icon material-playlist-add" d="M19,17V13H17v4H13v2h4v4h2V19h4V17Z" transform="translate(1337 264)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

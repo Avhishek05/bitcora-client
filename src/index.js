@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './components/App';
 import * as serviceWorker from './serviceWorker';
+import AppBootUp from "./container/app-boot";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AppBootUp />
   </React.StrictMode>,
   document.getElementById('root')
 );
