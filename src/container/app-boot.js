@@ -11,7 +11,7 @@ const store = createStore(rootReducer);
 
 export default class AppBootUp extends React.Component<> {
 
-    static render() {
+    render() {
         return (
             <Provider store={store}>
             <AppRoutes/>

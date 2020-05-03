@@ -1,10 +1,5 @@
 import React from "react";
-import {
-    Route,
-    Switch,
-    BrowserRouter as Router,
-    Redirect
-} from "react-router-dom";
+import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
 import Login from "../components/Login/login"
 
 const routesConfig = [
@@ -17,13 +12,13 @@ const routesConfig = [
 ];
 
 const AppRoutes = () => {
-    console.log(process.env.REACT_APP_BASE_URL);
     return (
         <Router>
             <Switch>
                 {routesConfig.map(config => {
                     return (
                         <Route
+                            exact={config.exact && true}
                             key={`${config.name}`}
                             path={config.path}
                             render={(props) => {
@@ -39,4 +34,4 @@ const AppRoutes = () => {
     );
 };
 
-export default AppRoutes;
+export default AppRoutes;;

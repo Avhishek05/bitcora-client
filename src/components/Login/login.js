@@ -7,18 +7,19 @@ import {emailChanged} from "../../store/actions/actions";
 
 class Login extends React.Component {
 
-    onEmailChange = (text)=>{
-        this.props.emailChanged(text);
+    constructor(props) {
+        super(props);
+    }
+    onEmailChange = (event)=>{
+        this.props.emailChanged(event.target.value);
     };
     render() {
         return (
             <div>
-                <p>
-                    { this.props.email}
-                </p>
-                <input value={ this.props.email } onChange={this.onEmailChange}/>
+                <p>{this.props.email}</p>
+                <input type="text" value={ this.props.email } onChange={this.onEmailChange}/>
             </div>
-        )
+        );
     }
 }
 const mapStateToProps = state => {
