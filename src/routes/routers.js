@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
 import LoginUser from "../components/Login/login"
+import Home from "../components/Home/index";
 
 const routesConfig = [
     {
@@ -8,6 +9,12 @@ const routesConfig = [
         component: LoginUser,
         name: "Login",
         exact: true
+    },
+    {
+        path: "/bitCora",
+        component: Home,
+        name: "Home",
+        exact: false
     }
 ];
 
