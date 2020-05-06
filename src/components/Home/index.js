@@ -18,6 +18,9 @@ export default class Home extends React.Component {
         return (
             <div>
                 <Switch>
+                    <Route exact path="/home">
+                        <Redirect to="/home/dashboard" />
+                    </Route>
                     <Route path={"/home/dashboard"}>
                         <BasicLayout component={<Dashboard />} />
                     </Route>

@@ -44,7 +44,7 @@ class LoginUser extends React.Component {
                         }, 500);
                     }
                     else{
-                        this.props.history.push("/home/dashboard");
+                        this.props.history.push("/home");
                     }
                 }
             );

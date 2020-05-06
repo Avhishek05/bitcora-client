@@ -11,7 +11,7 @@ const routesConfig = [
         exact: true
     },
     {
-        path: "/bitCora",
+        path: "/home",
         component: Home,
         name: "Home",
         exact: false
