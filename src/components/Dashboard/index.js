@@ -13,7 +13,7 @@ export default class Dashboard extends React.Component {
     render() {
         return (
             <div>
-                HI I am at dashboard
+                HI Deepak, click on User Icon above me
             </div>
         );
     }

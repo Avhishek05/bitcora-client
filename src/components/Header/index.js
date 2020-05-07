@@ -1,15 +1,39 @@
 import React from "react";
-import {Row, Col, Icon} from "antd";
+import {Row, Col, Icon, Card, Avatar, Popover } from "antd";
+import "./styles.scss"
+const { Meta } = Card;
+
 export default class BitcoraHeader extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+        };
     }
+
+    userDetails = () => {
+        return (
+            <Card style={{ width: 180, border:0}}>
+                <Meta
+                    style={{}}
+                    avatar={
+                        <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"/>
+                    }
+                    title="Abhishek Yadav"
+                    description="@avhishek_ydv"
+                />
+                <div>
+                    <ul>
+                        <li>Add new post</li>
+                        <li>Show my details</li>
+                    </ul>
+                </div>
+            </Card>);
+    };
 
     render() {
         return (
-            <Row>
+            <Row className="header">
                 <Col span={20}>
                     <h1>BLOG</h1>
                 </Col>
@@ -25,13 +49,17 @@ export default class BitcoraHeader extends React.Component {
                             <Icon type="bell" />
                         </Col>
                         <Col span={6}>
-                            <Icon type="user" />
+                            <Popover placement="bottom" content={this.userDetails()} trigger="click">
+                            <Icon type="user"/>
+                            </Popover>
                         </Col>
                     </Row>
                 </Col>
             </Row>
         );
     }
+
+
 
 }
 
