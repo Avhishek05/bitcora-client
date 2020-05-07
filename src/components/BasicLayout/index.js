@@ -4,19 +4,21 @@
 import React from "react";
 import {Layout} from "antd";
 import {withRouter} from "react-router-dom";
+import BitcoraHeader from "../Header/index";
 
-const { Content } = Layout;
+const { Content, Header } = Layout;
 
 class BasicLayout extends React.Component {
 
     render() {
         return (
-            <div  className='basic-layout'>
-                <Layout style={{ height: "100vh" }}>
+            <div style={{marginLeft: '8%',marginRight: '8%'}}>
+                <Header style={{backgroundColor:"#FFF"}}>
+                    <BitcoraHeader />
+                </Header>
                     <Layout>
                         <Content>{this.props.component}</Content>
                     </Layout>
-                </Layout>
             </div>
         );
     }
