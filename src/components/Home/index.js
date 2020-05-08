@@ -6,6 +6,7 @@ import React from "react";
 import {Redirect, Route, Switch} from "react-router-dom";
 import Dashboard from "../Dashboard/index";
 import BasicLayout from "../BasicLayout/index"
+import AddPost from "../AddPost/index";
 
 export default class Home extends React.Component {
 
@@ -23,6 +24,9 @@ export default class Home extends React.Component {
                     </Route>
                     <Route path={"/home/dashboard"}>
                         <BasicLayout component={<Dashboard />} />
+                    </Route>
+                    <Route path={"/home/addPost"}>
+                        <BasicLayout component={<AddPost />} />
                     </Route>
 
                     {/*<Route exact path="/otherPage">*/}

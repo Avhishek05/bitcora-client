@@ -1,15 +1,21 @@
 import React from "react";
 import {Row, Col, Icon, Card, Avatar, Popover } from "antd";
 import "./styles.scss"
+import {withRouter} from "react-router-dom";
+
 const { Meta } = Card;
 
-export default class BitcoraHeader extends React.Component {
+class BitcoraHeader extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
         };
     }
+
+    addPost = ()=>{
+        this.props.history.push("/home/addPost")
+    };
 
     userDetails = () => {
         return (
@@ -23,8 +29,9 @@ export default class BitcoraHeader extends React.Component {
                     description="@avhishek_ydv"
                 />
                 <div>
-                    <ul>
-                        <li>Add new post</li>
+                    <ul className="user-actions">
+                        <hr/>
+                        <li className="user-action-item" onClick={this.addPost}>Add new post</li>
                         <li>Show my details</li>
                     </ul>
                 </div>
@@ -58,8 +65,7 @@ export default class BitcoraHeader extends React.Component {
             </Row>
         );
     }
-
-
-
 }
+
+export default withRouter(BitcoraHeader);
 

@@ -1,9 +1,16 @@
-.header{
+.user-actions {
+  padding-left: 0;
+  list-style-type: none;
+  .user-action-item{
+    cursor: pointer;
+  }
 }
+
 .ant-card-body {
-  padding: 15px !important;
+  padding: 0 !important;
 }
-.ant-card-meta-title{
+
+.ant-card-meta-title {
   overflow: visible !important;
   white-space: normal !important;
 }
