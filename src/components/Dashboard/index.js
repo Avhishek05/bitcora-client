@@ -1,26 +1,31 @@
-/**
- * Created by Abhi on 07-05-2020.
- */
-
 import React from "react";
 import posts from "../../dummyData/posts.json"
 import {Row, Col} from "antd"
-
-export default class Dashboard extends React.Component {
+import {
+    getPostslist,
+} from "../../store/actions/actions";
+import {withRouter} from "react-router-dom";
+import {connect} from "react-redux";
+class Dashboard extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {};
     }
 
+    componentDidMount(){
+        this.props.dispatch(getPostslist({id : 1}));
+    }
+
     render() {
+        console.log(this.props.data);
         return (
             <div>
                 {
                     posts.map((item, index) => {
                             return (
-                                <div>
-                                    <Row key={index} gutter={16}>
+                                <div key={index}>
+                                    <Row  gutter={16}>
                                         <Col span={6}>{item.id}</Col>
                                         <Col span={4}>{item.title}</Col>
                                         <Col span={4}>{item.subTitle}</Col>
@@ -36,6 +41,17 @@ export default class Dashboard extends React.Component {
             </div>
         );
     }
-
 }
 
+const mapStateToProps = (state) => {
+    return {
+        data: state.postLists,
+    };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+    getPostslist: () => dispatch(getPostslist()),
+    dispatch
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
