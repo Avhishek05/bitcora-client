@@ -1,10 +1,7 @@
 import React from "react";
-import posts from "../../dummyData/posts.json"
-import {Row, Col} from "antd"
-import {
-    getPostslist,
-} from "../../store/actions/actions";
-import {withRouter} from "react-router-dom";
+import posts from "../../dummyData/posts.json";
+import {Col, Row} from "antd";
+import {getPostslist} from "../../store/actions/actions";
 import {connect} from "react-redux";
 class Dashboard extends React.Component {
 
@@ -14,7 +11,7 @@ class Dashboard extends React.Component {
     }
 
     componentDidMount(){
-        this.props.dispatch(getPostslist({id : 1}));
+        this.props.dispatch(getPostslist());
     }
 
     render() {
@@ -44,6 +41,7 @@ class Dashboard extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+        console.log("st", state)
     return {
         data: state.postLists,
     };

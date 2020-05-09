@@ -2,7 +2,6 @@ import React from "react";
 import {Button, Input} from "antd";
 import "./styles.scss";
 import {withRouter} from "react-router-dom";
-import posts from "../../dummyData/posts.json"
 
 class AddPost extends React.Component {
 

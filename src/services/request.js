@@ -26,7 +26,6 @@ const request = async (url, method, apiHeader, body, contentType = "application/
     if (navigator.onLine) {
         return fetch(url, options)
             .then(res => {
-                console.log("response", res);
             })
             .catch((e) => {
                 alert(e);

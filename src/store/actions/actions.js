@@ -11,7 +11,6 @@ export const textChanged = text => {
 };
 
 export function getPostslist(payload) {
-    console.log("jack", payload);
     return {
         type: GET_POSTS,
         payload
