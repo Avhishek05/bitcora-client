@@ -9,7 +9,7 @@ import {
 
 function* getPosts(action) {
     try {
-        const data = yield call(fetchPostsCall, action.payload);
+        const data = yield call(fetchPostsCall);
         console.log("in saga", data);
         yield put({ type: GET_POSTS_SUCCESS, payload: data });
     } catch (e) {
@@ -23,15 +23,15 @@ function* watchGetPosts() {
 
 export default watchGetPosts;
 
-const fetchPostsCall = async (payload) => {
-    const url = postsListUrl(payload);
+const fetchPostsCall = async () => {
+    const url = postsListUrl();
     console.log("url is", url);
     const res = await api.getPostslist(url);
     console.log("response", res);
-    if (res && res.success) {
-        return res.data;
+    if (res) {
+        return res;
     } else {
-        console.log("error");
+        console.log("error aa rhi");
         return;
     }
 };

@@ -25,7 +25,10 @@ const request = async (url, method, apiHeader, body, contentType = "application/
     // Returns after adding request and kernel filteration
     if (navigator.onLine) {
         return fetch(url, options)
-            .then(res => {
+            .then(response => response.json())
+            .then(response => {
+                return response;
+
             })
             .catch((e) => {
                 alert(e);
