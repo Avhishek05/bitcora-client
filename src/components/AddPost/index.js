@@ -2,7 +2,6 @@ import React from "react";
 import {Button, Form, Input} from "antd";
 import "./styles.scss";
 import {withRouter} from "react-router-dom";
-const { TextArea } = Input;
 
 const layout = {
     labelCol: {
@@ -33,7 +32,7 @@ class AddPost extends React.Component {
         return (
                 <div>
                     <Form {...layout}
-                          onSubmit={this.onSubmit}>
+                          onFinish={this.onSubmit}>
                         <Form.Item
                             label="Title"
                             name="title"
