@@ -80,12 +80,9 @@ class LoginUser extends React.Component {
                             <UserName
                                 name="username"
                                 placeholder="Email"
-                                setFieldsValue={this.props.email}
                                 onChange={this.onEmailChange}/>
                             <Password name="password"
                                       placeholder="Password"
-                                      setFieldsValue={this.props.email}
-
                                       onChange={this.onPasswordChange}/>
                         <Submit>Login</Submit>
                         </Tab>

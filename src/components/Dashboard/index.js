@@ -2,7 +2,9 @@ import React from "react";
 import {connect} from "react-redux";
 import {Col, Row} from "antd";
 import {getPostslist} from "../../store/actions/actions";
-import bookImg from "../../assets/fake-data/images/pic_wall.jpg"
+import wallImg from "../../assets/fake-data/images/pic_wall.jpg"
+import bookImg from "../../assets/fake-data/images/pic_books.jpg"
+
 class Dashboard extends React.Component {
 
     constructor(props) {
@@ -28,7 +30,10 @@ class Dashboard extends React.Component {
                                             <p>{item.content}</p>
                                         </Col>
                                         <Col span={4}>
-                                            <img style={{width:'80%'}} src={bookImg}/>
+                                            { index/2===0 &&
+                                            <img style={{width:'80%'}} src={bookImg} alt="a"/> }
+                                            { index/2!==0 &&
+                                            <img style={{width:'80%'}} src={wallImg} alt="b"/>}
                                         </Col>
                                     </Row>
                                     <hr/>
