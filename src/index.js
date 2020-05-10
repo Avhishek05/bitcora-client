@@ -6,9 +6,7 @@ import AppBootUp from "./container/app-boot";
 import 'antd/dist/antd.css';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <AppBootUp />
-  </React.StrictMode>,
+    <AppBootUp />  ,
   document.getElementById('root')
 );
 
