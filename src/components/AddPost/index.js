@@ -1,7 +1,8 @@
 import React from "react";
-import {Button, Input} from "antd";
+import {Button, Col, Input, Row} from "antd";
 import "./styles.scss";
 import {withRouter} from "react-router-dom";
+const { TextArea } = Input;
 
 class AddPost extends React.Component {
 
@@ -17,7 +18,16 @@ class AddPost extends React.Component {
     render() {
         return (
                 <div>
-                    <Input style={{height:200}}/>
+                    <Row>
+                        <Col span={5}>Title</Col>
+                        <Col span={4}> Subtitle</Col>
+                    </Row>
+                    <Row>
+                        <Col span={5}><Input/></Col>
+                        <Col span={4}><Input/></Col>
+                    </Row>
+                    <span>Content</span>
+                    <TextArea rows={4} />
                     <Button onClick={ this.savePost}
                     >Add</Button>
                 </div>

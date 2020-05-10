@@ -1,8 +1,8 @@
 import React from "react";
-import posts from "../../dummyData/posts.json";
+import {connect} from "react-redux";
 import {Col, Row} from "antd";
 import {getPostslist} from "../../store/actions/actions";
-import {connect} from "react-redux";
+import bookImg from "../../assets/fake-data/images/pic_wall.jpg"
 class Dashboard extends React.Component {
 
     constructor(props) {
@@ -17,22 +17,25 @@ class Dashboard extends React.Component {
     render() {
         return (
             <div>
-                {
-                    posts.map((item, index) => {
+                { !this.props.loader?(
+                    this.props.data.map((item, index) => {
                             return (
-                                <div key={index}>
-                                    <Row  gutter={16}>
-                                        <Col span={6}>{item.id}</Col>
-                                        <Col span={4}>{item.title}</Col>
-                                        <Col span={4}>{item.subTitle}</Col>
-                                        <Col span={1}>{item.userId}</Col>
-                                        <Col span={9}>{item.content}</Col>
+                                <div key={index} style={{padding: 10}}>
+                                    <Row gutter={[24,24]}>
+                                        <Col span={20}>
+                                            <h3>{item.title}</h3>
+                                            <h5>{item.subTitle}</h5>
+                                            <p>{item.content}</p>
+                                        </Col>
+                                        <Col span={4}>
+                                            <img style={{width:'80%'}} src={bookImg}/>
+                                        </Col>
                                     </Row>
-                                    <hr />
+                                    <hr/>
                                 </div>
                             );
                         }
-                    )
+                    )):null
                 }
             </div>
         );
@@ -40,13 +43,15 @@ class Dashboard extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+    console.log(state)
     return {
-        data: state.postLists,
+        data: state.posts.postLists,
+        loader : state.posts.loader,
     };
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    // getPostslist: () => dispatch(getPostslist()),
+    getPostslist: () => dispatch(getPostslist()),
     dispatch
 });
 
