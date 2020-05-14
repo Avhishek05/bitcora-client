@@ -33,7 +33,9 @@ class BitcoraHeader extends React.Component {
                     <ul className="user-actions">
                         <hr/>
                         <li className="user-action-item" onClick={this.addPost}>Add new post</li>
-                        <li>Show my details</li>
+                        <li>Profile</li>
+                        <li>Stats</li>
+                        <li>Log Out</li>
                     </ul>
                 </div>
             </Card>);
