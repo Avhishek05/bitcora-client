@@ -4,6 +4,9 @@ import {Col, Row} from "antd";
 import {getPostslist} from "../../store/actions/actions";
 import wallImg from "../../assets/fake-data/images/pic_wall.jpg"
 import bookImg from "../../assets/fake-data/images/pic_books.jpg"
+import posts from "../../dummyData/posts.json"
+import "./styles.scss"
+import {withRouter} from "react-router-dom";
 
 class Dashboard extends React.Component {
 
@@ -16,14 +19,18 @@ class Dashboard extends React.Component {
         this.props.dispatch(getPostslist());
     }
 
+    openThisPost =()=>{
+        this.props.history.push("/home/userName/postTitle");
+    };
+
     render() {
         return (
             <div>
                 { !this.props.loader?(
-                    this.props.data.map((item, index) => {
+                    posts.map((item, index) => {
                             return (
-                                <div key={index} style={{padding: 10}}>
-                                    <Row gutter={[24,24]}>
+                                <div key={index} style={{padding: 10}} onClick={ this.openThisPost}>
+                                    <Row gutter={[24,24]} className="post">
                                         <Col span={20}>
                                             <h3>{item.title}</h3>
                                             <h5>{item.subTitle}</h5>
@@ -31,9 +38,9 @@ class Dashboard extends React.Component {
                                         </Col>
                                         <Col span={4}>
                                             { index/2===0 &&
-                                            <img style={{width:'80%'}} src={bookImg} alt="a"/> }
+                                            <img className="img" src={bookImg} alt="a"/> }
                                             { index/2!==0 &&
-                                            <img style={{width:'80%'}} src={wallImg} alt="b"/>}
+                                            <img className="img" src={wallImg} alt="b"/>}
                                         </Col>
                                     </Row>
                                     <hr/>
@@ -48,7 +55,6 @@ class Dashboard extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
         data: state.posts.postLists,
         loader : state.posts.loader,
@@ -60,4 +66,4 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Dashboard));

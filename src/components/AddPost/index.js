@@ -2,6 +2,7 @@ import React from "react";
 import {Button, Form, Input} from "antd";
 import "./styles.scss";
 import {withRouter} from "react-router-dom";
+import {addPost} from "../../store/actions/actions";
 
 const layout = {
     labelCol: {
@@ -20,13 +21,17 @@ class AddPost extends React.Component {
         this.state = {};
     }
 
-    onSubmit =(values)=>{
-        console.log("asd", values);
+    onSubmit = (values) => {
+        // let obj = {
+        //     user :{
+        //         id: ""
+        //     },
+        //
+        //
+        // }
+        this.props.dispatch(addPost(values));
         this.props.history.push("/home/dashboard");
     };
-
-
-
 
     render() {
         return (

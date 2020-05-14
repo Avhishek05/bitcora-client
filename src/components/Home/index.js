@@ -7,6 +7,7 @@ import {Redirect, Route, Switch} from "react-router-dom";
 import Dashboard from "../Dashboard/index";
 import BasicLayout from "../BasicLayout/index"
 import AddPost from "../AddPost/index";
+import Post from "../Post/index";
 
 export default class Home extends React.Component {
 
@@ -24,6 +25,9 @@ export default class Home extends React.Component {
                     </Route>
                     <Route path={"/home/dashboard"}>
                         <BasicLayout component={<Dashboard />} />
+                    </Route>
+                    <Route path={"/home/userName/postTitle"}>
+                        <BasicLayout component={<Post />} />
                     </Route>
                     <Route path={"/home/addPost"}>
                         <BasicLayout component={<AddPost />} />

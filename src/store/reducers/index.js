@@ -3,8 +3,12 @@
  */
 import { combineReducers } from "redux";
 import AuthReducers from './auth-reducer';
-import GetPostReducer from './getPosts';
+import GetPostsReducer from './getPosts';
+import AddPostReducer from './addPost';
+import GetPostReducer from './getPost';
 export default combineReducers({
     auth  : AuthReducers,
-    posts : GetPostReducer,
+    posts : GetPostsReducer,
+    addPost: AddPostReducer,
+    post : GetPostReducer,
 });
