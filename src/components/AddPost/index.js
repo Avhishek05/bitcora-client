@@ -3,6 +3,7 @@ import {Button, Form, Input} from "antd";
 import "./styles.scss";
 import {withRouter} from "react-router-dom";
 import {addPost} from "../../store/actions/actions";
+import {connect} from "react-redux";
 
 const layout = {
     labelCol: {
@@ -22,14 +23,15 @@ class AddPost extends React.Component {
     }
 
     onSubmit = (values) => {
-        // let obj = {
-        //     user :{
-        //         id: ""
-        //     },
-        //
-        //
-        // }
-        this.props.dispatch(addPost(values));
+        let obj = {
+            user :{
+                id: "5eb667a72eedfc2a48cd3246"
+            },
+            post :{
+                ...values
+            }
+        }
+        this.props.dispatch(addPost(obj));
         this.props.history.push("/home/dashboard");
     };
 
@@ -65,4 +67,16 @@ class AddPost extends React.Component {
         );
     }
 }
-export default withRouter(AddPost);
+const mapStateToProps = (state) => {
+    return {
+        loader : state.addPost.loader,
+        data : state.addPost.addPost,
+    };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+    post: () => dispatch(addPost()),
+    dispatch
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AddPost));

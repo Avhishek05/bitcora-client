@@ -5,7 +5,7 @@ import {ADD_POST} from "../constants";
 import {ADD_POST_SUCCESS} from "../constants";
 import {ADD_POST_FAILURE} from "../constants";
 
-const initialState= { postLists: [], loader: true };
+const initialState= { addPost: [], loader: true };
 
 export default function(state= initialState, action) {
 
@@ -13,7 +13,7 @@ export default function(state= initialState, action) {
         case ADD_POST:
             return { ...state, loader: true };
         case ADD_POST_SUCCESS:
-            return { ...state, error: false, loader: false };
+            return {...state, addPost: action.payload, error: false, loader: false};
         case ADD_POST_FAILURE:
             return { ...state, error: true,loader: false };
         default:

@@ -12,11 +12,11 @@ function getPost(dataUrl) {
     return request(url, method, {}, {});
 }
 
-function addPost(dataUrl) {
+function addPost(dataUrl, payload) {
     const method = "POST";
     const url = dataUrl;
-
-    return request(url, method, {}, {});
+    const body = payload;
+    return request(url, method, {}, body);
 }
 export default {
     getPostslist,

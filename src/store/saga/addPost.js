@@ -17,16 +17,17 @@ function* addPost(action) {
         yield put({ type: ADD_POST_FAILURE, payload: e });
     }
 }
-function* watchGetPosts() {
+function* watchAddPosts() {
     yield takeEvery(ADD_POST, addPost);
 }
 
-export default watchGetPosts;
+export default watchAddPosts;
 
-const addPostCall = async () => {
+const addPostCall = async (payload) => {
+    console.log("p",payload);
     const url = addPostUrl();
     console.log("url is", url);
-    const res = await api.addPost(url);
+    const res = await api.addPost(url,payload);
     console.log("response", res);
     if (res) {
         return res;

@@ -4,7 +4,6 @@ import {Col, Row} from "antd";
 import {getPostslist} from "../../store/actions/actions";
 import wallImg from "../../assets/fake-data/images/pic_wall.jpg"
 import bookImg from "../../assets/fake-data/images/pic_books.jpg"
-import posts from "../../dummyData/posts.json"
 import "./styles.scss"
 import {withRouter} from "react-router-dom";
 
@@ -27,7 +26,7 @@ class Dashboard extends React.Component {
         return (
             <div>
                 { !this.props.loader?(
-                    posts.map((item, index) => {
+                    this.props.data.map((item, index) => {
                             return (
                                 <div key={index} style={{padding: 10}} onClick={ this.openThisPost}>
                                     <Row gutter={[24,24]} className="post">
