@@ -8,8 +8,9 @@ import {
 } from "../constants";
 
 function* getPost(action) {
+    console.log("a", action);
     try {
-        const data = yield call(fetchPostCall);
+        const data = yield call(fetchPostCall, action.payload);
         console.log("in saga", data);
         yield put({ type: GET_POST_SUCCESS, payload: data });
     } catch (e) {
@@ -23,8 +24,8 @@ function* watchGetPost() {
 
 export default watchGetPost;
 
-const fetchPostCall = async () => {
-    const url = fetchPostUrl();
+const fetchPostCall = async (postId) => {
+    const url = fetchPostUrl(postId);
     console.log("url is", url);
     const res = await api.getPost(url);
     console.log("response", res);

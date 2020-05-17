@@ -44,10 +44,10 @@ class BitcoraHeader extends React.Component {
     render() {
         return (
             <Row className="header">
-                <Col span={20}>
+                <Col span={2} onClick={()=> this.props.history.push("/home/dashboard")} style={{cursor: 'pointer'}}>
                     <h1>BLOG</h1>
                 </Col>
-                <Col span={4}>
+                <Col offset={18} span={4}>
                     <Row gutter={16}>
                         <Col span={6}>
                             <SearchOutlined />

@@ -1,12 +1,13 @@
 import React from "react";
 import {connect} from "react-redux";
 import {Col, Row} from "antd";
-import {getPostslist} from "../../store/actions/actions";
+import {getPost, getPostslist} from "../../store/actions/actions";
 import wallImg from "../../assets/fake-data/images/pic_wall.jpg"
 import bookImg from "../../assets/fake-data/images/pic_books.jpg"
 import "./styles.scss"
 import {withRouter} from "react-router-dom";
 import DashboardRight from "../DashboardRight"
+import _ from "lodash";
 class Dashboard extends React.Component {
 
     constructor(props) {
@@ -17,10 +18,12 @@ class Dashboard extends React.Component {
     componentDidMount(){
         // I have added store in props thats why I am getting dispatch in props.
         // console.log("props",this.props);
-        this.props.dispatch(getPostslist());
+        this.props.getPostslist();
     }
 
-    openThisPost =()=>{
+    openThisPost =(postId)=>{
+        console.log("postId",postId);
+        this.props.getPost(postId);
         this.props.history.push("/home/userName/postTitle");
     };
 
@@ -31,12 +34,12 @@ class Dashboard extends React.Component {
                     { !this.props.loader ? (
                         this.props.data.map((item, index) => {
                                 return (
-                                    <div key={index} style={{padding: 10}} onClick={ this.openThisPost}>
+                                    <div key={index} style={{padding: 10}} onClick={()=> this.openThisPost(item._id)}>
                                         <Row gutter={[24, 24]} className="post">
                                             <Col span={20}>
                                                 <h3>{item.title}</h3>
                                                 <h5>{item.subTitle}</h5>
-                                                <p>{item.content}</p>
+                                                <p>{_.get(item,'content',"").length>100?item.content.substring(0, 100) + '...' :item.content}</p>
                                             </Col>
                                             <Col span={4}>
                                                 { index / 2 === 0 &&
@@ -70,6 +73,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
     getPostslist: () => dispatch(getPostslist()),
+    getPost: (postId) => dispatch(getPost(postId)),
     dispatch
 });
 // mapDispatchToProps pass actions to props and dispatch action

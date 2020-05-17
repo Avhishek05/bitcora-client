@@ -11,7 +11,7 @@ function* addPost(action) {
     try {
         const data = yield call(addPostCall, action.payload);
         console.log("in saga", data);
-        yield put({ type: ADD_POST_SUCCESS, payload: action.payload });
+        yield put({ type: ADD_POST_SUCCESS, payload: data });
     } catch (e) {
         console.log(e, "error");
         yield put({ type: ADD_POST_FAILURE, payload: e });

@@ -32,8 +32,8 @@ class AddPost extends React.Component {
             }
         }
         console.log("props", this.props);
-        this.props.dispatch(addPost(obj));
-        // this.props.post(obj);
+        // this.props.dispatch(addPost(obj));
+        this.props.post(obj);
         this.props.history.push("/home/dashboard");
     };
 
@@ -70,6 +70,7 @@ class AddPost extends React.Component {
     }
 }
 const mapStateToProps = (state) => {
+    console.log("add post returns",state);
     return {
         loader : state.addPost.loader,
         data : state.addPost.addPost,
@@ -77,7 +78,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    // post: (obj) => dispatch(addPost(obj)),
+    post: (obj) => dispatch(addPost(obj)),
     dispatch
 });
 

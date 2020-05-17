@@ -8,6 +8,6 @@ export const addPostUrl= () => {
     return `${BASE_URL}/posts/add/`;
 };
 
-export const fetchPostUrl= () => {
-    return `${BASE_URL}/posts/get/userId`;
+export const fetchPostUrl= (postId) => {
+    return `${BASE_URL}/posts?postId=${postId}`;
 };

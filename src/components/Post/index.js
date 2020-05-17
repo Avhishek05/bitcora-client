@@ -9,10 +9,10 @@ class Post extends React.Component{
     }
 
     componentDidMount (){
-        this.props.dispatch(getPost())
     }
 
     render(){
+        const { post } = this.props;
         return (
             <div>
                 <h3>{post.title}</h3>
@@ -25,13 +25,13 @@ class Post extends React.Component{
 
 const mapStateToProps = (state) => {
     return {
-        data: state.post.post,
+        // post: state.post.post,
+        post: {title : 'a', subTitle : 'b', content : 'c'},
         loader : state.post.loader,
     };
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    getPost: () => dispatch(getPost()),
     dispatch
 });
 
