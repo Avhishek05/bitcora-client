@@ -25,8 +25,7 @@ class Post extends React.Component{
 
 const mapStateToProps = (state) => {
     return {
-        // post: state.post.post,
-        post: {title : 'a', subTitle : 'b', content : 'c'},
+        post: state.post.post,
         loader : state.post.loader,
     };
 };

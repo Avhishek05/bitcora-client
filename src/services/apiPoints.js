@@ -9,5 +9,5 @@ export const addPostUrl= () => {
 };
 
 export const fetchPostUrl= (postId) => {
-    return `${BASE_URL}/posts?postId=${postId}`;
+    return `${BASE_URL}/posts/postId/${postId}`;
 };

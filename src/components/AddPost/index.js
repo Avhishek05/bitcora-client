@@ -45,18 +45,22 @@ class AddPost extends React.Component {
                         <Form.Item
                             label="Title"
                             name="title"
+                            rules={[{ required: true, message: 'Please input Title!' }]}
                         >
                             <Input />
                         </Form.Item>
                         <Form.Item
                             label="SubTitle"
                             name="subTitle"
+                            rules={[{ required: true, message: 'Please input SubTitle!' }]}
                         >
                             <Input />
                         </Form.Item>
                         <Form.Item
                             name="content"
-                            label="Content">
+                            label="Content"
+                            rules={[{ required: true, message: 'Please input Content!' }]}
+                        >
                             <Input.TextArea />
                         </Form.Item>
                         <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
