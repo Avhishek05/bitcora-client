@@ -8,7 +8,6 @@ import Dashboard from "../Dashboard/index";
 import BasicLayout from "../BasicLayout/index"
 import AddPost from "../AddPost/index";
 import Post from "../Post/index";
-
 export default class Home extends React.Component {
 
     constructor(props) {

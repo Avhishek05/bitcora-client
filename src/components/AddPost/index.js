@@ -31,7 +31,9 @@ class AddPost extends React.Component {
                 ...values
             }
         }
+        console.log("props", this.props);
         this.props.dispatch(addPost(obj));
+        // this.props.post(obj);
         this.props.history.push("/home/dashboard");
     };
 
@@ -75,8 +77,9 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    post: () => dispatch(addPost()),
+    // post: (obj) => dispatch(addPost(obj)),
     dispatch
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AddPost));
+// export default withRouter(connect(mapStateToProps, addPost, dispatch)(AddPost));

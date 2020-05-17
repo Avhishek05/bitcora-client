@@ -16,7 +16,7 @@ class BasicLayout extends React.Component {
                 <Header style={{backgroundColor:"#FFF"}}>
                     <BitcoraHeader />
                 </Header>
-                    <Layout style={{display: 'block'}}>
+                    <Layout style={{display: 'block',backgroundColor:'#FFF'}}>
                         <Content>{this.props.component}</Content>
                     </Layout>
             </div>
