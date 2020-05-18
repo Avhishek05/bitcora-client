@@ -18,8 +18,17 @@ function addPost(dataUrl, payload) {
     const body = payload;
     return request(url, method, {}, body);
 }
+
+function addComment(dataUrl, payload) {
+    const method = "POST";
+    const url = dataUrl;
+    const body = payload;
+    return request(url, method, {}, body);
+}
+
 export default {
     getPostslist,
     addPost,
     getPost,
+    addComment
 };

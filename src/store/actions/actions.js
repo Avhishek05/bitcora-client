@@ -1,8 +1,5 @@
-/**
- * Created by Abhi on 03-05-2020.
- */
 import {TEXT_CHANGED} from "./types";
-import {ADD_POST, GET_POST, GET_POSTS} from "../constants";
+import {ADD_POST, GET_POST, GET_POSTS,GET_COMMENTS,ADD_COMMENT} from "../constants";
 export const textChanged = text => {
     return {
         type: TEXT_CHANGED,
@@ -27,6 +24,13 @@ export function addPost(payload) {
 export function getPost(payload) {
     return {
         type: GET_POST,
+        payload
+    };
+}
+
+export function addComment(payload){
+    return {
+        type : ADD_COMMENT,
         payload
     };
 }

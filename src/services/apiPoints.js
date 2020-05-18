@@ -11,3 +11,11 @@ export const addPostUrl= () => {
 export const fetchPostUrl= (postId) => {
     return `${BASE_URL}/posts/postId/${postId}`;
 };
+
+export const addCommentUrl = ()=>{
+    return `${BASE_URL}/posts/addcomment/`
+}
+
+export const fetchCommentsUrl = ()=>{
+    return `${BASE_URL}/posts/allcomments`
+}
