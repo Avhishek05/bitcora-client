@@ -18,6 +18,11 @@ class BitcoraHeader extends React.Component {
         this.props.history.push("/home/addPost")
     };
 
+    goToProfile = ()=>{
+        this.props.history.push("/home/profile")
+
+    };
+
     userDetails = () => {
         return (
             <Card style={{ width: 180, border:0}}>
@@ -33,7 +38,7 @@ class BitcoraHeader extends React.Component {
                     <ul className="user-actions">
                         <hr/>
                         <li className="user-action-item" onClick={this.addPost}>Add new post</li>
-                        <li>Profile</li>
+                        <li className="user-action-item" onClick={this.goToProfile}>Profile</li>
                         <li>Stats</li>
                         <li>Log Out</li>
                     </ul>
