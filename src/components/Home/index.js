@@ -9,7 +9,6 @@ import BasicLayout from "../BasicLayout/index"
 import AddPost from "../AddPost/index";
 import Post from "../Post/index";
 import Profile from "../Profile/index";
-import AddComment from "../Common/AddComment";
 export default class Home extends React.Component {
 
     constructor(props) {
@@ -28,7 +27,7 @@ export default class Home extends React.Component {
                         <BasicLayout component={<Dashboard />} />
                     </Route>
                     <Route path={"/home/addPost"}>
-                        <BasicLayout component={<AddComment />} />
+                        <BasicLayout component={<AddPost />} />
                     </Route>
                     <Route path={"/home/profile"}>
                         <BasicLayout component={<Profile />} />

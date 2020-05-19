@@ -5,13 +5,6 @@ import {withRouter} from "react-router-dom";
 
 class Profile extends React.Component{
 
-    constructor(props) {
-        super(props);
-    }
-
-    componentDidMount (){
-    }
-
     render(){
         return (
             <div style={{width: 680,margin:'auto'}}>

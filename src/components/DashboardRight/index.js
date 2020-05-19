@@ -1,13 +1,8 @@
 import React from "react";
-import {connect} from "react-redux";
 import "./styles.scss";
 import {withRouter} from "react-router-dom";
 
 class DashboardRight extends React.Component {
-
-    constructor(props) {
-        super(props);
-    }
 
     componentDidMount(){
 

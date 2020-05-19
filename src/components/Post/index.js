@@ -1,7 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
-import {getPost} from "../../store/actions/actions";
-import post from "../../dummyData/post.json"
+import AddComment from "../../components/Common/AddComment/index";
 class Post extends React.Component{
     constructor(props) {
         super(props);
@@ -18,6 +17,7 @@ class Post extends React.Component{
                 <h3>{post.title}</h3>
                 <h5>{post.subTitle}</h5>
                 <p>{post.content}</p>
+                <AddComment />
             </div>
         );
     }

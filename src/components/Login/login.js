@@ -8,12 +8,8 @@ import {Button} from "antd";
 import "./styles.scss";
 class LoginUser extends React.Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     onSubmit = () => {
-      this.props.history.push("/home");
+        this.props.history.push("/home");
     };
 
     render() {
