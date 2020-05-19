@@ -1,6 +1,9 @@
 import React from "react";
 import {connect} from "react-redux";
 import AddComment from "../../components/Common/AddComment/index";
+import dummyPost from "../../dummyData/post.json"
+import _ from "lodash";
+
 class Post extends React.Component{
     constructor(props) {
         super(props);
@@ -8,6 +11,7 @@ class Post extends React.Component{
     }
 
     componentDidMount (){
+        console.log(dummyPost)
     }
 
     render(){
@@ -18,6 +22,10 @@ class Post extends React.Component{
                 <h5>{post.subTitle}</h5>
                 <p>{post.content}</p>
                 <AddComment />
+                    {
+                _.map(_.get(dummyPost,'comments',[]),(item)=>{
+                    return <p key={item.id}>{item.comment}</p>
+            })}
             </div>
         );
     }

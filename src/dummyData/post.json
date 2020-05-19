@@ -2,6 +2,15 @@
   "id": "6083a61a-729c-47ab",
   "title": "React Native Login Screen Style Strategy",
   "subTitle": "n this article, I’m going to turn a login screen with no styles to a fully styled",
-  "content": "React Native Elements is a UI kit that lets developers build cohesive user interfaces. They have a  wide variety of out of the box components that come handy when building mobile applications including Avatar,Badge, ButtonGroup, Card, etc. You can install it withnpm install --save react-native-elementsOne cool thing about React Native Elements is that they allow theming of their components. We can start by identifying the components on the login screen. Just by looking at the view, it's easy to see that we’ll need to theme both input and button. Let’s begin by first changing the button component so it matches our design. We need to change thebutton background to black and the text to white. The text will be replaced by an iconbut more on that later.",
-  "userId": 1
+  "content": "React Native Elements is a UI kit that lets developers build cohesive user interfaces. They have a  wide variety of out of the box components that come handy when building mobile applications including Avatar,Badge, ButtonGroup, Card, etc. You can install it withnpm install --save react-native-elementsOne cool thing about React Native Elements is that they allow theming of their components. We can start by identifying the components on the login screen. Just by looking at the view, it's easy to see that we’ll need to theme both input and button. Let’s begin by first changing the button component so it matches ourdesign. We need to change thebutton background to black and the text to white. The text will be replaced by an iconbut more on that later.",
+  "userId": 1,
+  "comments" : [{
+    "id": "6083a61a-729c-47ac",
+      "comment" : "hi how are you"
+  },
+    {
+      "id": "6083a61a-729c-47ab",
+      "comment" : "this is perfact post"
+    }
+  ]
 }
