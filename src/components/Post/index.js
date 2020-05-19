@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import AddComment from "../../components/Common/AddComment/index";
 import dummyPost from "../../dummyData/post.json"
 import _ from "lodash";
+import UserDetail from "../Common/userDetails/index";
 
 class Post extends React.Component{
     constructor(props) {
@@ -18,6 +19,7 @@ class Post extends React.Component{
         const { post } = this.props;
         return (
             <div>
+                <UserDetail/>
                 <h3>{post.title}</h3>
                 <h5>{post.subTitle}</h5>
                 <p>{post.content}</p>

@@ -1,6 +1,6 @@
 import React from "react";
 import {Row, Col, Card, Avatar, Popover } from "antd";
-import { SearchOutlined, UserOutlined, BellOutlined, SaveOutlined  } from '@ant-design/icons';
+import { SearchOutlined, UserOutlined, BellOutlined, BookOutlined  } from '@ant-design/icons';
 import "./styles.scss"
 import {withRouter} from "react-router-dom";
 
@@ -58,7 +58,7 @@ class BitcoraHeader extends React.Component {
                             <SearchOutlined />
                         </Col>
                         <Col span={6}>
-                            <SaveOutlined />
+                            <BookOutlined />
                         </Col>
                         <Col span={6}>
                             <BellOutlined />
