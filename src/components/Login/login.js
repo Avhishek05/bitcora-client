@@ -3,7 +3,7 @@
  */
 import React from "react";
 import {connect} from "react-redux";
-import {textChanged} from "../../store/actions/actions";
+import {searchText} from "../../store/actions/actions";
 import {Button} from "antd";
 import "./styles.scss";
 class LoginUser extends React.Component {
@@ -24,8 +24,7 @@ class LoginUser extends React.Component {
 }
 const mapStateToProps = state => {
     return {
-        email: state.auth.email,
-    };
+        };
 
 };
-export default connect(mapStateToProps, {textChanged})(LoginUser);
+export default connect(mapStateToProps, {searchText})(LoginUser);

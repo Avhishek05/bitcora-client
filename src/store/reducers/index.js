@@ -8,12 +8,13 @@ import AddPostReducer from './addPost';
 import GetPostReducer from './getPost';
 import AddCommentReducer from './addComment';
 import GetCommentReducer from './getComments'
+import searchedText from "./searchText";
 
 export default combineReducers({
-    auth  : AuthReducers,
     posts : GetPostsReducer,
     addPost: AddPostReducer,
     post : GetPostReducer,
     addComment : AddCommentReducer,
     comments : GetCommentReducer,
+    searchedText: searchedText
 });

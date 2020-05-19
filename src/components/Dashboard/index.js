@@ -8,6 +8,7 @@ import "./styles.scss"
 import {withRouter} from "react-router-dom";
 import DashboardRight from "../DashboardRight"
 import _ from "lodash";
+
 class Dashboard extends React.Component {
 
     constructor(props) {
@@ -15,32 +16,39 @@ class Dashboard extends React.Component {
         this.state = {};
     }
 
-    componentDidMount(){
+    componentDidMount() {
         // I have added store in props thats why I am getting dispatch in props.
         // console.log("props",this.props);
         this.props.getPostslist();
     }
 
-    openThisPost =(postId)=>{
+    openThisPost = (postId) => {
         this.props.history.push({
-            pathname : "/home/userName/post",
+            pathname: "/home/userName/post",
             search: `?id=${postId}`
         });
     };
+
+    filter = () => {
+        let text = _.get(this.props,'searchedText',"");
+        return _.filter(this.props.data, (post)=> _.isUndefined(post.title) || post.title.toLowerCase().indexOf(text) >= 0
+    || _.isUndefined(post.subTitle) || post.subTitle.toLowerCase().indexOf(text) >= 0
+        || _.isUndefined(post.content) || post.content.toLowerCase().indexOf(text) >= 0)
+};
 
     render() {
         return (
             <Row>
                 <Col span={18}>
                     { !this.props.loader ? (
-                        this.props.data.map((item, index) => {
+                        this.filter().map((item, index) => {
                                 return (
-                                    <div key={index} style={{padding: 10}} onClick={()=> this.openThisPost(item._id)}>
+                                    <div key={index} style={{padding: 10}} onClick={() => this.openThisPost(item._id)}>
                                         <Row gutter={[24, 24]} className="post">
                                             <Col span={20}>
                                                 <h3>{item.title}</h3>
                                                 <h5>{item.subTitle}</h5>
-                                                <p>{_.get(item,'content',"").length>100?item.content.substring(0, 100) + '...' :item.content}</p>
+                                                <p>{_.get(item, 'content', "").length > 100 ? item.content.substring(0, 100) + '...' : item.content}</p>
                                             </Col>
                                             <Col span={4}>
                                                 { index / 2 === 0 &&
@@ -57,7 +65,7 @@ class Dashboard extends React.Component {
                     }
                 </Col>
                 <Col span={6}>
-            <DashboardRight />
+                    <DashboardRight />
                 </Col>
             </Row>
         );
@@ -65,9 +73,11 @@ class Dashboard extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+    console.log("state", state)
     return {
         data: state.posts.postLists,
-        loader : state.posts.loader,
+        loader: state.posts.loader,
+        searchedText: state.searchedText.value
     };
 };
 

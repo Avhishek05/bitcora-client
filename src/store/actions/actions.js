@@ -1,11 +1,5 @@
-import {TEXT_CHANGED} from "./types";
-import {ADD_POST, GET_POST, GET_POSTS,GET_COMMENTS,ADD_COMMENT} from "../constants";
-export const textChanged = text => {
-    return {
-        type: TEXT_CHANGED,
-        payload: text
-    };
-};
+import {SEARCH_TEXT} from "./types";
+import {ADD_POST, GET_POST, GET_POSTS,ADD_COMMENT} from "../constants";
 
 export function getPostslist(payload) {
     return {
@@ -38,6 +32,13 @@ export function addComment(payload){
 export function getCommentsList(payload) {
     return {
         type: GET_COMMENTS,
+        payload
+    };
+}
+
+export function searchText(payload){
+    return {
+        type : SEARCH_TEXT,
         payload
     };
 }
