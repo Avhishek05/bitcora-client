@@ -1,31 +1,38 @@
 import React from "react";
-import {Row, Col, Card, Avatar, Popover } from "antd";
-import { SearchOutlined, UserOutlined, BellOutlined, BookOutlined  } from '@ant-design/icons';
+import {Row, Col, Card, Avatar, Popover, Input} from "antd";
+import {SearchOutlined, UserOutlined, BellOutlined, BookOutlined} from '@ant-design/icons';
 import "./styles.scss"
 import {withRouter} from "react-router-dom";
+import {searchText} from "../../store/actions/actions"
+import {connect} from "react-redux";
 
-const { Meta } = Card;
+const {Meta} = Card;
 
 class BitcoraHeader extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
+            searchVisible: false,
         };
     }
 
-    addPost = ()=>{
+    addPost = () => {
         this.props.history.push("/home/addPost")
     };
 
-    goToProfile = ()=>{
+    goToProfile = () => {
         this.props.history.push("/home/profile")
 
     };
 
+    onSearchTextChange = (e) => {
+        this.props.searchText(e.target.value);
+    };
+
     userDetails = () => {
         return (
-            <Card style={{ width: 180, border:0}}>
+            <Card style={{width: 180, border: 0}}>
                 <Meta
                     style={{}}
                     avatar={
@@ -49,13 +56,18 @@ class BitcoraHeader extends React.Component {
     render() {
         return (
             <Row className="header">
-                <Col span={2} onClick={()=> this.props.history.push("/home/dashboard")} style={{cursor: 'pointer'}}>
+                <Col span={2} onClick={() => this.props.history.push("/home/dashboard")} style={{cursor: 'pointer'}}>
                     <h1>BLOG</h1>
                 </Col>
-                <Col offset={18} span={4}>
+                <Col offset={3} span={13}>
+                    { this.state.searchVisible &&
+                    <Input onChange={this.onSearchTextChange}/>
+                    }
+                </Col>
+                <Col offset={2} span={4}>
                     <Row gutter={16}>
                         <Col span={6}>
-                            <SearchOutlined />
+                            <SearchOutlined onClick={() => this.setState({searchVisible: true})}/>
                         </Col>
                         <Col span={6}>
                             <BookOutlined />
@@ -65,7 +77,7 @@ class BitcoraHeader extends React.Component {
                         </Col>
                         <Col span={6}>
                             <Popover placement="bottom" content={this.userDetails()} trigger="hover">
-                            <UserOutlined/>
+                                <UserOutlined/>
                             </Popover>
                         </Col>
                     </Row>
@@ -74,6 +86,9 @@ class BitcoraHeader extends React.Component {
         );
     }
 }
+const mapDispatchToProps = (dispatch) => ({
+    searchText: (v) => dispatch(searchText(v)),
+    dispatch,
+});
 
-export default withRouter(BitcoraHeader);
-
+export default withRouter(connect(null, mapDispatchToProps)(BitcoraHeader));
