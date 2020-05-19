@@ -7,11 +7,13 @@ import GetPostsReducer from './getPosts';
 import AddPostReducer from './addPost';
 import GetPostReducer from './getPost';
 import AddCommentReducer from './addComment';
+import GetCommentReducer from './getComments'
 
 export default combineReducers({
     auth  : AuthReducers,
     posts : GetPostsReducer,
     addPost: AddPostReducer,
     post : GetPostReducer,
-    addComment : AddCommentReducer
+    addComment : AddCommentReducer,
+    comments : GetCommentReducer,
 });

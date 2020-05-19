@@ -34,3 +34,10 @@ export function addComment(payload){
         payload
     };
 }
+
+export function getCommentsList(payload) {
+    return {
+        type: GET_COMMENTS,
+        payload
+    };
+}

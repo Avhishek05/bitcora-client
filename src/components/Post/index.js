@@ -6,6 +6,7 @@ import _ from "lodash";
 import UserDetail from "../Common/userDetails/index";
 import {getPost} from "../../store/actions/actions";
 import {withRouter} from "react-router-dom";
+import FetchComments from "../Common/FetchCommets/index"
 
 class Post extends React.Component{
     constructor(props) {
@@ -28,9 +29,11 @@ class Post extends React.Component{
                 <h5>{post.subTitle}</h5>
                 <p>{post.content}</p>
                 <AddComment />
-                    {
+                    {/* {
                 _.map(_.get(dummyPost,'comments',[]),(item)=>{
-                    return <p key={item.id}>{item.comment}</p>
+                    return <p key={item.id}>{item.comment}</p> */}
+                <p>Comments : </p>
+                <FetchComments/>
             })}
             </div>
         );

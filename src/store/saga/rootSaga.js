@@ -3,7 +3,7 @@ import watchGetPosts from "./fetchPosts";
 import watchGetPost from "./fetchPost";
 import watchAddPosts from "./addPost";
 import watchAddComment from "./addComment";
-
+import watchGetComments from './fetchComments'
 
 const rootSaga = function* rootSaga() {
     yield all([
@@ -11,6 +11,7 @@ const rootSaga = function* rootSaga() {
         watchGetPost(),
         watchAddPosts(),
         watchAddComment(),
+        watchGetComments(),
     ]);
 };
 

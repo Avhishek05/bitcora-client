@@ -26,9 +26,19 @@ function addComment(dataUrl, payload) {
     return request(url, method, {}, body);
 }
 
+function getCommentslist(dataUrl,payload) {
+    const method = "POST";
+    const url = dataUrl;
+    const body = payload;
+    console.log(body)
+    
+    return request(url, method, {}, body);
+}
+
 export default {
     getPostslist,
     addPost,
     getPost,
-    addComment
+    addComment,
+    getCommentslist,
 };
