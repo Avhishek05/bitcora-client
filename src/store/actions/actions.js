@@ -1,5 +1,5 @@
 import {SEARCH_TEXT} from "./types";
-import {ADD_POST, GET_POST, GET_POSTS,ADD_COMMENT} from "../constants";
+import {ADD_POST, GET_POST, GET_POSTS,GET_COMMENTS,ADD_COMMENT} from "../constants";
 
 export function getPostslist(payload) {
     return {
