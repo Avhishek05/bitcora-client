@@ -32,7 +32,7 @@ export default class Home extends React.Component {
                     <Route path={"/home/profile"}>
                         <BasicLayout component={<Profile />} />
                     </Route>
-                    <Route path={"/home/userName/postTitle"}>
+                    <Route path={"/home/userName/post"}>
                         <BasicLayout component={<Post />} />
                     </Route>
 

@@ -22,9 +22,10 @@ class Dashboard extends React.Component {
     }
 
     openThisPost =(postId)=>{
-        console.log("postId",postId);
-        this.props.getPost(postId);
-        this.props.history.push("/home/userName/postTitle");
+        this.props.history.push({
+            pathname : "/home/userName/post",
+            search: `?id=${postId}`
+        });
     };
 
     render() {
@@ -64,7 +65,6 @@ class Dashboard extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log("State" , state);
     return {
         data: state.posts.postLists,
         loader : state.posts.loader,
@@ -73,7 +73,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
     getPostslist: () => dispatch(getPostslist()),
-    getPost: (postId) => dispatch(getPost(postId)),
     dispatch
 });
 // mapDispatchToProps pass actions to props and dispatch action
