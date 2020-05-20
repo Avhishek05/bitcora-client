@@ -1,13 +1,13 @@
 import React from "react";
-import {Row,Col,Tag} from "antd";
+import {Row, Col, Tag} from "antd";
 import user_default from "../../assets/fake-data/images/user_default.png"
 import {withRouter} from "react-router-dom";
 
-class Profile extends React.Component{
+class Profile extends React.Component {
 
-    render(){
+    render() {
         return (
-            <div style={{width: 680,margin:'auto'}}>
+            <div style={{width: 680, margin: 'auto'}}>
                 <Row style={{height: 177}}>
                     <Col span={18}>
                         <Row>
@@ -20,7 +20,7 @@ class Profile extends React.Component{
 
                     </Col>
                     <Col span={6}>
-                        <img style={{width : 150}} src={user_default} alt="b"/>
+                        <img style={{width: 150}} src={user_default} alt="b"/>
                     </Col>
                 </Row>
                 <div><h5>My Posts</h5></div>

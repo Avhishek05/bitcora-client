@@ -10,7 +10,7 @@ export default class AppBootUp extends React.Component<> {
     render() {
         return (
             <Provider store={store}>
-            <AppRoutes/>
+                <AppRoutes/>
             </Provider>
         );
     }

@@ -24,10 +24,10 @@ class AddPost extends React.Component {
 
     onSubmit = (values) => {
         let obj = {
-            user :{
+            user: {
                 id: "5eb667a72eedfc2a48cd3246"
             },
-            post :{
+            post: {
                 ...values
             }
         }
@@ -39,45 +39,45 @@ class AddPost extends React.Component {
 
     render() {
         return (
-                <div>
-                    <Form {...layout}
-                          onFinish={this.onSubmit}>
-                        <Form.Item
-                            label="Title"
-                            name="title"
-                            rules={[{ required: true, message: 'Please input Title!' }]}
-                        >
-                            <Input />
-                        </Form.Item>
-                        <Form.Item
-                            label="SubTitle"
-                            name="subTitle"
-                            rules={[{ required: true, message: 'Please input SubTitle!' }]}
-                        >
-                            <Input />
-                        </Form.Item>
-                        <Form.Item
-                            name="content"
-                            label="Content"
-                            rules={[{ required: true, message: 'Please input Content!' }]}
-                        >
-                            <Input.TextArea />
-                        </Form.Item>
-                        <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-                            <Button type="primary" htmlType="submit">
-                                Submit
-                            </Button>
-                        </Form.Item>
-                    </Form>
-                </div>
+            <div>
+                <Form {...layout}
+                      onFinish={this.onSubmit}>
+                    <Form.Item
+                        label="Title"
+                        name="title"
+                        rules={[{required: true, message: 'Please input Title!'}]}
+                    >
+                        <Input />
+                    </Form.Item>
+                    <Form.Item
+                        label="SubTitle"
+                        name="subTitle"
+                        rules={[{required: true, message: 'Please input SubTitle!'}]}
+                    >
+                        <Input />
+                    </Form.Item>
+                    <Form.Item
+                        name="content"
+                        label="Content"
+                        rules={[{required: true, message: 'Please input Content!'}]}
+                    >
+                        <Input.TextArea />
+                    </Form.Item>
+                    <Form.Item wrapperCol={{...layout.wrapperCol, offset: 8}}>
+                        <Button type="primary" htmlType="submit">
+                            Submit
+                        </Button>
+                    </Form.Item>
+                </Form>
+            </div>
         );
     }
 }
 const mapStateToProps = (state) => {
-    console.log("add post returns",state);
+    console.log("add post returns", state);
     return {
-        loader : state.addPost.loader,
-        data : state.addPost.addPost,
+        loader: state.addPost.loader,
+        data: state.addPost.addPost,
     };
 };
 

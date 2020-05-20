@@ -1,9 +1,8 @@
 import React from "react";
 import {connect} from "react-redux";
-import {Col, Row,Card,Avatar} from "antd";
+import {Avatar, Card, Col, Row} from "antd";
 import {getCommentsList} from "../../../store/actions/actions";
 import {withRouter} from "react-router-dom";
-import _ from "lodash";
 
 const {Meta} = Card;
 
@@ -14,14 +13,17 @@ class FetchComments extends React.Component {
         this.state = {};
     }
 
-    componentDidMount(){
+    componentDidMount() {
         // I have added store in props thats why I am getting dispatch in props.
         // console.log("props",this.props);
+        const params = new URLSearchParams(this.props.location.search);
+        let postId = params.get('id');
         const req_body = {
-            "post" : {
-                "id" : "5eb1bfbedf9ee32f4cfa0f35"
+            "post": {
+                // "id" : "5eb1bfbedf9ee32f4cfa0f35"
+                "id": postId
             }
-        }
+        };
         this.props.getCommentsList(req_body);
     }
 
@@ -31,30 +33,31 @@ class FetchComments extends React.Component {
                 <Col span={18}>
                     { !this.props.loader ? (
                         this.props.data.comments.map((item, index) => {
-                            return (
-                                <div key={item._id} style={{padding: 3}}>
-                                    <Row gutter={[12, 12]} className="comment">
-                                        <Col span={20}>
-                                            <Card style={{width: 180, border: 0}}>
-                                                <Meta
-                                                    style={{}}
-                                                    avatar={
-                                                        <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"/>
-                                                    }
-                                                    title={item.UserDetails[0].name}
-                                                    description={item.UserDetails[0].email}
-                                                />
-                                            </Card>
-                                            
-                                            <p>{item.text}</p>
-                                            {/* <h5>{item.subTitle}</h5>
-                                            <p>{_.get(item,'content',"").length>100?item.content.substring(0, 100) + '...' :item.content}</p> */}
-                                        </Col>
-                                        
-                                    </Row>
-                                    <hr/>
-                                </div>
-                            );
+                                return (
+                                    <div key={item._id} style={{padding: 3}}>
+                                        <Row gutter={[12, 12]} className="comment">
+                                            <Col span={20}>
+                                                <Card style={{width: 180, border: 0}}>
+                                                    <Meta
+                                                        style={{}}
+                                                        avatar={
+                                                            <Avatar
+                                                                src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"/>
+                                                        }
+                                                        title={item.UserDetails[0].name}
+                                                        description={item.UserDetails[0].email}
+                                                    />
+                                                </Card>
+
+                                                <p>{item.text}</p>
+                                                {/* <h5>{item.subTitle}</h5>
+                                                 <p>{_.get(item,'content',"").length>100?item.content.substring(0, 100) + '...' :item.content}</p> */}
+                                            </Col>
+
+                                        </Row>
+                                        <hr/>
+                                    </div>
+                                );
                             }
                         )) : null
                     }
@@ -68,7 +71,7 @@ class FetchComments extends React.Component {
 const mapStateToProps = (state) => {
     return {
         data: state.comments.commentList,
-        loader : state.comments.loader,
+        loader: state.comments.loader,
     };
 };
 

@@ -1,27 +1,25 @@
 import React from "react";
 import {connect} from "react-redux";
 import AddComment from "../../components/Common/AddComment/index";
-import dummyPost from "../../dummyData/post.json"
-import _ from "lodash";
 import UserDetail from "../Common/userDetails/index";
 import {getPost} from "../../store/actions/actions";
 import {withRouter} from "react-router-dom";
-import FetchComments from "../Common/FetchCommets/index"
+import FetchComments from "../Common/FetchCommets/index";
 
-class Post extends React.Component{
+class Post extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
     }
 
-    componentDidMount (){
+    componentDidMount() {
         const params = new URLSearchParams(this.props.location.search);
-        let postId = params.get('id')
+        let postId = params.get('id');
         this.props.getPost(postId);
     }
 
-    render(){
-        const { post } = this.props;
+    render() {
+        const {post} = this.props;
         return (
             <div>
                 <UserDetail/>
@@ -29,12 +27,8 @@ class Post extends React.Component{
                 <h5>{post.subTitle}</h5>
                 <p>{post.content}</p>
                 <AddComment />
-                    {/* {
-                _.map(_.get(dummyPost,'comments',[]),(item)=>{
-                    return <p key={item.id}>{item.comment}</p> */}
                 <p>Comments : </p>
                 <FetchComments/>
-            })}
             </div>
         );
     }
@@ -43,7 +37,7 @@ class Post extends React.Component{
 const mapStateToProps = (state) => {
     return {
         post: state.post.post,
-        loader : state.post.loader,
+        loader: state.post.loader,
     };
 };
 

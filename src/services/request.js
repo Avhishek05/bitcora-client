@@ -31,7 +31,7 @@ const request = async (url, method, apiHeader, body, contentType = "application/
 
             })
             .catch((e) => {
-                alert(e);
+                console.log(e);
             });
     } else {
         alert("no internet connection");

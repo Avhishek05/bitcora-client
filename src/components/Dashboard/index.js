@@ -1,12 +1,12 @@
 import React from "react";
 import {connect} from "react-redux";
 import {Col, Row} from "antd";
-import {getPost, getPostslist} from "../../store/actions/actions";
-import wallImg from "../../assets/fake-data/images/pic_wall.jpg"
-import bookImg from "../../assets/fake-data/images/pic_books.jpg"
-import "./styles.scss"
+import {getPostslist} from "../../store/actions/actions";
+import wallImg from "../../assets/fake-data/images/pic_wall.jpg";
+import bookImg from "../../assets/fake-data/images/pic_books.jpg";
+import "./styles.scss";
 import {withRouter} from "react-router-dom";
-import DashboardRight from "../DashboardRight"
+import DashboardRight from "../DashboardRight";
 import _ from "lodash";
 
 class Dashboard extends React.Component {
@@ -17,8 +17,6 @@ class Dashboard extends React.Component {
     }
 
     componentDidMount() {
-        // I have added store in props thats why I am getting dispatch in props.
-        // console.log("props",this.props);
         this.props.getPostslist();
     }
 
@@ -30,11 +28,11 @@ class Dashboard extends React.Component {
     };
 
     filter = () => {
-        let text = _.get(this.props,'searchedText',"");
-        return _.filter(this.props.data, (post)=> _.isUndefined(post.title) || post.title.toLowerCase().indexOf(text) >= 0
-    || _.isUndefined(post.subTitle) || post.subTitle.toLowerCase().indexOf(text) >= 0
+        let text = _.get(this.props, 'searchedText', "");
+        return _.filter(this.props.data, (post) => _.isUndefined(post.title) || post.title.toLowerCase().indexOf(text) >= 0
+        || _.isUndefined(post.subTitle) || post.subTitle.toLowerCase().indexOf(text) >= 0
         || _.isUndefined(post.content) || post.content.toLowerCase().indexOf(text) >= 0)
-};
+    };
 
     render() {
         return (
@@ -56,7 +54,7 @@ class Dashboard extends React.Component {
                                                 { index / 2 !== 0 &&
                                                 <img className="img" src={wallImg} alt="b"/>}
                                             </Col>
-                                        </Row>
+                                        a</Row>
                                         <hr/>
                                     </div>
                                 );

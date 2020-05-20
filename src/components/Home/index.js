@@ -21,24 +21,20 @@ export default class Home extends React.Component {
             <div>
                 <Switch>
                     <Route exact path="/home">
-                        <Redirect to="/home/dashboard" />
+                        <Redirect to="/home/dashboard"/>
                     </Route>
                     <Route path={"/home/dashboard"}>
-                        <BasicLayout component={<Dashboard />} />
+                        <BasicLayout component={<Dashboard />}/>
                     </Route>
                     <Route path={"/home/addPost"}>
-                        <BasicLayout component={<AddPost />} />
+                        <BasicLayout component={<AddPost />}/>
                     </Route>
                     <Route path={"/home/profile"}>
-                        <BasicLayout component={<Profile />} />
+                        <BasicLayout component={<Profile />}/>
                     </Route>
                     <Route path={"/home/userName/post"}>
-                        <BasicLayout component={<Post />} />
+                        <BasicLayout component={<Post />}/>
                     </Route>
-
-                    {/*<Route exact path="/otherPage">*/}
-                        {/*<Redirect to="/otherPage" />*/}
-                    {/*</Route>*/}
                 </Switch>
             </div>
         );

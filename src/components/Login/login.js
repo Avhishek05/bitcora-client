@@ -23,8 +23,7 @@ class LoginUser extends React.Component {
     }
 }
 const mapStateToProps = state => {
-    return {
-        };
+    return {};
 
 };
 export default connect(mapStateToProps, {searchText})(LoginUser);

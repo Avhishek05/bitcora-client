@@ -47,7 +47,7 @@ class AddComment extends React.Component {
         console.log("props", this.props);
         // this.props.dispatch(addPost(obj));
         this.props.comment(obj);
-        this.props.history.push("/home/dashboard");
+        // this.props.history.push("/home/dashboard");
     };
 
     render() {

@@ -4,14 +4,15 @@ import {withRouter} from "react-router-dom";
 
 class DashboardRight extends React.Component {
 
-    componentDidMount(){
+    componentDidMount() {
 
     }
 
     render() {
         return (
             <div className="right">
-           <p>Hiiiiiiiiiiiii</p>
+                <p>Here we are going to show</p>
+                <p>Still not deiceded yet</p>
             </div>
         );
     }
