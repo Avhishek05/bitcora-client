@@ -67,7 +67,7 @@ class BitcoraHeader extends React.Component {
                 <Col offset={2} span={4}>
                     <Row gutter={16}>
                         <Col span={6}>
-                            <SearchOutlined onClick={() => this.setState({searchVisible: true})}/>
+                            <SearchOutlined onClick={() => this.setState({searchVisible: !this.state.searchVisible})}/>
                         </Col>
                         <Col span={6}>
                             <BookOutlined />
