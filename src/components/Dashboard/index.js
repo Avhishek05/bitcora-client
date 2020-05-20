@@ -28,8 +28,9 @@ class Dashboard extends React.Component {
     };
 
     filter = () => {
+        let d = _.filter(this.props.data, (post) => !_.isUndefined(post.title))
         let text = _.get(this.props, 'searchedText', "");
-        return _.filter(this.props.data, (post) => _.isUndefined(post.title) || post.title.toLowerCase().indexOf(text) >= 0
+        return _.filter(d, (post) => _.isUndefined(post.title) || post.title.toLowerCase().indexOf(text) >= 0
         || _.isUndefined(post.subTitle) || post.subTitle.toLowerCase().indexOf(text) >= 0
         || _.isUndefined(post.content) || post.content.toLowerCase().indexOf(text) >= 0)
     };
@@ -54,7 +55,7 @@ class Dashboard extends React.Component {
                                                 { index / 2 !== 0 &&
                                                 <img className="img" src={wallImg} alt="b"/>}
                                             </Col>
-                                        a</Row>
+                                        </Row>
                                         <hr/>
                                     </div>
                                 );
