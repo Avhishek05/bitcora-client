@@ -1,7 +1,9 @@
 import React from "react";
 import {Button, Form, Input} from "antd";
 import {addComment} from "../../../store/actions/actions";
+import {getCommentsList} from "../../../store/actions/actions";
 import {connect} from "react-redux";
+import {withRouter} from "react-router-dom";
 
 const layout = {
     labelCol: {
@@ -11,7 +13,6 @@ const layout = {
         span: 16,
     },
 };
-
 class AddComment extends React.Component {
 
     constructor(props) {
@@ -21,32 +22,29 @@ class AddComment extends React.Component {
 
     onSubmit = (values) => {
         let idOfAbhi = "5eb667a72eedfc2a48cd3246";
-        let idOfAbhiPost = "5eb66dc389b8c844f09aefc0";
-        // let obj = {
-        //     user :{
-        //         id: "5eb1bce2dcdc67313469866a"
-        //     },
-        //     post :{
-        //         id : "5eb1bfbedf9ee32f4cfa0f35"
-        //     },
-        //     comment : {
-        //         ...values
-        //     }
-        // }
+        const params = new URLSearchParams(this.props.location.search);
+        let postId = params.get('id');
+        const req_body = {
+            "post": {
+                // "id" : "5eb1bfbedf9ee32f4cfa0f35"
+                "id": postId
+            }
+        };
         let obj = {
             user: {
                 id: idOfAbhi
             },
             post: {
-                id: idOfAbhiPost
+                id: postId
             },
             comment: {
                 ...values
             }
         }
         console.log("props", this.props);
-        // this.props.dispatch(addPost(obj));
         this.props.comment(obj);
+        this.props.getCommentsList(req_body);
+
         // this.props.history.push("/home/dashboard");
     };
 
@@ -64,7 +62,7 @@ class AddComment extends React.Component {
                         <Input.TextArea />
                     </Form.Item>
                     <Form.Item wrapperCol={{...layout.wrapperCol, offset: 8}}>
-                        <Button type="primary" htmlType="submit">
+                        <Button type="primary" htmlType="submit" >
                             Submit
                         </Button>
                     </Form.Item>
@@ -83,7 +81,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
     comment: (obj) => dispatch(addComment(obj)),
+    getCommentsList: (req_body) => dispatch(getCommentsList(req_body)),
     dispatch
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddComment);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AddComment));
