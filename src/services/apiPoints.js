@@ -19,3 +19,10 @@ export const addCommentUrl = ()=>{
 export const fetchCommentsUrl = ()=>{
     return `${BASE_URL}/posts/allcomments`
 }
+
+export const fetchLoginUrl = ()=>{
+    return `${BASE_URL}/users/login`
+}
+export const fetchRegisterUrl = ()=>{
+    return `${BASE_URL}/users/register`
+}

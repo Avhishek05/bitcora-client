@@ -35,10 +35,26 @@ function getCommentslist(dataUrl,payload) {
     return request(url, method, {}, body);
 }
 
+function login(dataUrl, payload) {
+    const method = "POST";
+    const url = dataUrl;
+    const body = payload;
+    return request(url, method, {}, body);
+}
+
+function register(dataUrl, payload) {
+    const method = "POST";
+    const url = dataUrl;
+    const body = payload;
+    return request(url, method, {}, body);
+}
+
 export default {
     getPostslist,
     addPost,
     getPost,
     addComment,
     getCommentslist,
+    register,
+    login,
 };

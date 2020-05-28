@@ -1,5 +1,5 @@
 import {SEARCH_TEXT} from "./types";
-import {ADD_POST, GET_POST, GET_POSTS,GET_COMMENTS,ADD_COMMENT} from "../constants";
+import {ADD_COMMENT, ADD_POST, GET_COMMENTS, GET_POST, GET_POSTS, PERFORM_LOGIN, PERFORM_SIGNUP} from "../constants";
 
 export function getPostslist(payload) {
     return {
@@ -39,6 +39,20 @@ export function getCommentsList(payload) {
 export function searchText(payload){
     return {
         type : SEARCH_TEXT,
+        payload
+    };
+}
+
+export function login(payload){
+    return {
+        type : PERFORM_LOGIN,
+        payload
+    };
+}
+
+export function register(payload){
+    return {
+        type : PERFORM_SIGNUP,
         payload
     };
 }
