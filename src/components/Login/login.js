@@ -45,8 +45,7 @@ class LoginUser extends React.Component {
             user: values
         };
         this.props.dispatch(register(payload));
-        this.props.history.push("/home");
-
+        alert('signUp successfull');
     };
 
     onFinishFailed = errorInfo => {
