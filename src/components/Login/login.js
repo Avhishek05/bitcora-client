@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {login, register} from "../../store/actions/actions";
 import {Button, Col, Form, Input, Row} from "antd";
 import "./styles.scss";
+import _ from "lodash"
 
 const layout = {
     labelCol: {
@@ -35,17 +36,25 @@ class LoginUser extends React.Component {
             user: values
         };
         this.props.dispatch(login(payload));
-        this.props.history.push("/home");
-
+        if (!(this.props.user.error)) {
+            this.props.history.push("/home");
+        }
+        else {
+            alert("login failed");
+        }
     };
 
     onFinishsignUp = (values) => {
-        console.log("hi")
         let payload = {
             user: values
         };
         this.props.dispatch(register(payload));
-        alert('signUp successfull');
+        if (!(this.props.user.error)) {
+            alert('signUp successfull');
+        }
+        else {
+            alert("sign up failed");
+        }
     };
 
     onFinishFailed = errorInfo => {
@@ -188,8 +197,9 @@ class LoginUser extends React.Component {
 const mapStateToProps = state => {
     console.log("user", state);
     return {
-        // loader: state.user.loader,
-        // user: state.user.user,
+        loader: state.user.loader,
+        user: state.user.user,
+        error: state.user.error
     };
 };
 const mapDispatchToProps = (dispatch) => ({
