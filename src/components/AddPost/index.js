@@ -5,6 +5,8 @@ import {withRouter} from "react-router-dom";
 import {addPost} from "../../store/actions/actions";
 import {connect} from "react-redux";
 
+import {TextEditor} from '../Common/Editor'
+
 const layout = {
     labelCol: {
         span: 8,
@@ -40,6 +42,7 @@ class AddPost extends React.Component {
     render() {
         return (
             <div>
+                
                 <Form {...layout}
                       onFinish={this.onSubmit}>
                     <Form.Item
@@ -61,7 +64,8 @@ class AddPost extends React.Component {
                         label="Content"
                         rules={[{required: true, message: 'Please input Content!'}]}
                     >
-                        <Input.TextArea />
+                        <TextEditor></TextEditor>
+                <br/>
                     </Form.Item>
                     <Form.Item wrapperCol={{...layout.wrapperCol, offset: 8}}>
                         <Button type="primary" htmlType="submit">
