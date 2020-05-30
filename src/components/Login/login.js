@@ -1,8 +1,9 @@
 import React from "react";
 import {connect} from "react-redux";
-import {searchText} from "../../store/actions/actions";
-import {Button, Form, Input, Checkbox, Col, Row} from "antd";
+import {login, register} from "../../store/actions/actions";
+import {Button, Col, Form, Input, Row} from "antd";
 import "./styles.scss";
+import _ from "lodash"
 
 const layout = {
     labelCol: {
@@ -31,15 +32,29 @@ class LoginUser extends React.Component {
     }
 
     onFinish = (values) => {
-        alert(JSON.stringify(values));
-        this.props.history.push("/home");
-
+        let payload = {
+            user: values
+        };
+        this.props.dispatch(login(payload));
+        if (!(this.props.user.error)) {
+            this.props.history.push("/home");
+        }
+        else {
+            alert("login failed");
+        }
     };
 
     onFinishsignUp = (values) => {
-        alert(JSON.stringify(values));
-        this.props.history.push("/home");
-
+        let payload = {
+            user: values
+        };
+        this.props.dispatch(register(payload));
+        if (!(this.props.user.error)) {
+            alert('signUp successfull');
+        }
+        else {
+            alert("sign up failed");
+        }
     };
 
     onFinishFailed = errorInfo => {
@@ -47,11 +62,11 @@ class LoginUser extends React.Component {
     };
 
     onShow = (field) => {
-        if(field==='login'){
-        this.setState({showLoginForm: true,showSignupForm: false})
+        if (field === 'login') {
+            this.setState({showLoginForm: true, showSignupForm: false})
         }
         else
-            this.setState({showLoginForm: false,showSignupForm: true});
+            this.setState({showLoginForm: false, showSignupForm: true});
 
     };
 
@@ -60,12 +75,12 @@ class LoginUser extends React.Component {
             <div>
                 <Row>
                     <Col offset={6} span={6}>
-                        <Button onClick={()=>this.onShow('login')}>
+                        <Button onClick={() => this.onShow('login')}>
                             Login
                         </Button>
                     </Col>
                     <Col offset={6} span={6}>
-                        <Button onClick={()=>this.onShow('signup')}>
+                        <Button onClick={() => this.onShow('signup')}>
                             Sign Up
                         </Button>
                     </Col>
@@ -115,7 +130,7 @@ class LoginUser extends React.Component {
                     </Form>
 
                 </div>}
-                
+
                 {!this.state.showLoginForm && this.state.showSignupForm &&
                 <div className="login-warp login-component">
                     <Form
@@ -172,14 +187,22 @@ class LoginUser extends React.Component {
                     </Form>
 
                 </div>}
-                
-                
+
+
             </div>
         );
     }
 }
-const mapStateToProps = state => {
-    return {};
 
+const mapStateToProps = state => {
+    console.log("user", state);
+    return {
+        loader: state.user.loader,
+        user: state.user.user,
+        error: state.user.error
+    };
 };
-export default connect(mapStateToProps, {searchText})(LoginUser);
+const mapDispatchToProps = (dispatch) => ({
+    dispatch
+});
+export default connect(mapStateToProps, mapDispatchToProps)(LoginUser);

@@ -4,6 +4,7 @@ import "./styles.scss";
 import {withRouter} from "react-router-dom";
 import {addPost} from "../../store/actions/actions";
 import {connect} from "react-redux";
+import RichTextEditor from "../editor/index1.js";
 
 import {TextEditor} from '../Common/Editor'
 
@@ -73,7 +74,9 @@ class AddPost extends React.Component {
                         </Button>
                     </Form.Item>
                 </Form>
-            </div>
+                <RichTextEditor />
+
+              </div>
         );
     }
 }

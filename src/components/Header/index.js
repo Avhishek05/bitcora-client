@@ -30,6 +30,10 @@ class BitcoraHeader extends React.Component {
         this.props.searchText(e.target.value);
     };
 
+    logout =()=>{
+        this.props.history.push("/");
+    };
+
     userDetails = () => {
         return (
             <Card style={{width: 180, border: 0}}>
@@ -47,7 +51,7 @@ class BitcoraHeader extends React.Component {
                         <li className="user-action-item" onClick={this.addPost}>Add new post</li>
                         <li className="user-action-item" onClick={this.goToProfile}>Profile</li>
                         <li>Stats</li>
-                        <li>Log Out</li>
+                        <li className="user-action-item" onClick={this.logout}>Log Out</li>
                     </ul>
                 </div>
             </Card>);
