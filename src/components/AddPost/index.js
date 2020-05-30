@@ -6,7 +6,7 @@ import {addPost} from "../../store/actions/actions";
 import {connect} from "react-redux";
 import RichTextEditor from "../editor/index1.js";
 
-import {TextEditor} from '../Common/Editor'
+
 
 const layout = {
     labelCol: {
@@ -65,7 +65,7 @@ class AddPost extends React.Component {
                         label="Content"
                         rules={[{required: true, message: 'Please input Content!'}]}
                     >
-                        <TextEditor></TextEditor>
+                        
                 <br/>
                     </Form.Item>
                     <Form.Item wrapperCol={{...layout.wrapperCol, offset: 8}}>
