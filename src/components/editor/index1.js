@@ -1,10 +1,13 @@
-import React, { useCallback, useMemo, useState } from 'react'
-import isHotkey from 'is-hotkey'
-import { Editable, withReact, useSlate, Slate } from 'slate-react'
-import { Editor, Transforms, createEditor } from 'slate'
-import { withHistory } from 'slate-history'
-
-import { Button, Row } from 'antd'
+import React, {useCallback, useMemo, useState} from "react";
+import isHotkey from "is-hotkey";
+import {Editable, Slate, useSlate, withReact} from "slate-react";
+import {createEditor, Editor, Transforms} from "slate";
+import {withHistory} from "slate-history";
+import {MdFormatListBulleted, MdFormatListNumbered} from "react-icons/md";
+import {GoBold, GoQuote, GoTextSize} from "react-icons/go";
+import "./style.scss";
+import {FaCode, FaUnderline} from "react-icons/fa";
+import {FaItalic} from "react-icons/fa/index";
 
 const HOTKEYS = {
     'mod+b': 'bold',
@@ -22,19 +25,20 @@ const RichTextEditor = () => {
     const renderLeaf = useCallback(props => <Leaf {...props} />, [])
     const editor = useMemo(() => withHistory(withReact(createEditor())), [])
 
+
     return (
         <Slate editor={editor} value={value} onChange={value => setValue(value)}>
-            <Row>
-                <MarkButton format="bold" icon="format_bold" />
-                <MarkButton format="italic" icon="format_italic" />
-                <MarkButton format="underline" icon="format_underlined" />
-                <MarkButton format="code" icon="code" />
-                <BlockButton format="heading-one" icon="looks_one" />
-                <BlockButton format="heading-two" icon="looks_two" />
-                <BlockButton format="block-quote" icon="format_quote" />
-                <BlockButton format="numbered-list" icon="format_list_numbered" />
-                <BlockButton format="bulleted-list" icon="format_list_bulleted" />
-            </Row>
+            <div className="options">
+                <BoldButton format="bold"/>
+                <ItalicButton format="italic"/>
+                <UnderlineButton format="underline"/>
+                <CodeButton format="code"/>
+                <H1Button format="heading-one"/>
+                {/*<H2Button format="heading-two"  />*/}
+                <FormatQuote format="block-quote"/>
+                <NumberListButton format="numbered-list"/>
+                <BulletListButton format="bulleted-list"/>
+            </div>
             <Editable
                 renderElement={renderElement}
                 renderLeaf={renderLeaf}
@@ -69,21 +73,19 @@ const toggleBlock = (editor, format) => {
     })
 
     if (!isActive && isList) {
-        const block = { type: format, children: [] }
+        const block = {type: format, children: []}
         Transforms.wrapNodes(editor, block)
     }
 }
 
 const toggleMark = (editor, format) => {
     const isActive = isMarkActive(editor, format)
-
     if (isActive) {
         Editor.removeMark(editor, format)
     } else {
         Editor.addMark(editor, format, true)
     }
 }
-
 const isBlockActive = (editor, format) => {
     const [match] = Editor.nodes(editor, {
         match: n => n.type === format,
@@ -97,7 +99,7 @@ const isMarkActive = (editor, format) => {
     return marks ? marks[format] === true : false
 }
 
-const Element = ({ attributes, children, element }) => {
+const Element = ({attributes, children, element}) => {
     switch (element.type) {
         case 'block-quote':
             return <blockquote {...attributes}>{children}</blockquote>
@@ -116,7 +118,7 @@ const Element = ({ attributes, children, element }) => {
     }
 }
 
-const Leaf = ({ attributes, children, leaf }) => {
+const Leaf = ({attributes, children, leaf}) => {
     if (leaf.bold) {
         children = <strong>{children}</strong>
     }
@@ -135,34 +137,92 @@ const Leaf = ({ attributes, children, leaf }) => {
 
     return <span {...attributes}>{children}</span>
 }
-
-const BlockButton = ({ format, icon }) => {
-    const editor = useSlate()
+const BoldButton = ({format}) => {
+    const editor = useSlate();
     return (
-        <Button
-            active={isBlockActive(editor, format)}
-            onMouseDown={event => {
-                event.preventDefault()
-                toggleBlock(editor, format)
-            }}
-        >
-            <p>{icon}</p>
-        </Button>
-    )
-}
-
-const MarkButton = ({ format, icon }) => {
-    const editor = useSlate()
-    return (
-        <Button
-            active={isMarkActive(editor, format)}
+        <GoBold
             onMouseDown={event => {
                 event.preventDefault()
                 toggleMark(editor, format)
             }}
-        >
-            <p>{icon}</p>
-        </Button>
+        />
+    )
+}
+const ItalicButton = ({format}) => {
+    const editor = useSlate();
+    return (
+        <FaItalic
+            onMouseDown={event => {
+                event.preventDefault()
+                toggleMark(editor, format)
+            }}
+        />
+    )
+}
+const UnderlineButton = ({format}) => {
+    const editor = useSlate();
+    return (
+        <FaUnderline
+            onMouseDown={event => {
+                event.preventDefault()
+                toggleMark(editor, format)
+            }}
+        />
+    )
+}
+const CodeButton = ({format}) => {
+    const editor = useSlate();
+    return (
+        <FaCode
+            onMouseDown={event => {
+                event.preventDefault()
+                toggleMark(editor, format)
+            }}
+        />
+    )
+}
+const H1Button = ({format}) => {
+    const editor = useSlate();
+    return (
+        <GoTextSize
+            onMouseDown={event => {
+                event.preventDefault()
+                toggleBlock(editor, format)
+            }}
+        />
+    )
+}
+const FormatQuote = ({format}) => {
+    const editor = useSlate();
+    return (
+        <GoQuote
+            onMouseDown={event => {
+                event.preventDefault()
+                toggleBlock(editor, format)
+            }}
+        />
+    )
+}
+const NumberListButton = ({format}) => {
+    const editor = useSlate();
+    return (
+        <MdFormatListNumbered
+            onMouseDown={event => {
+                event.preventDefault()
+                toggleBlock(editor, format)
+            }}
+        />
+    )
+}
+const BulletListButton = ({format}) => {
+    const editor = useSlate();
+    return (
+        <MdFormatListBulleted
+            onMouseDown={event => {
+                event.preventDefault()
+                toggleBlock(editor, format)
+            }}
+        />
     )
 }
 
@@ -170,36 +230,29 @@ const initialValue = [
     {
         type: 'paragraph',
         children: [
-            { text: 'This is editable ' },
-            { text: 'rich', bold: true },
-            { text: ' text, ' },
-            { text: 'much', italic: true },
-            { text: ' better than a ' },
-            { text: '<textarea>', code: true },
-            { text: '!' },
+            {text: 'Type here '},
+
         ],
     },
     {
         type: 'paragraph',
         children: [
             {
-                text:
-                    "Since it's rich text, you can do things like turn a selection of text ",
+                text: "Since it's rich text, you can do things like turn a selection of text ",
             },
-            { text: 'bold', bold: true },
+            {text: 'bold', bold: true},
             {
-                text:
-                    ', or add a semantically rendered block quote in the middle of the page, like this:',
+                text: ', or add a semantically rendered block quote in the middle of the page, like this:',
             },
         ],
     },
     {
         type: 'block-quote',
-        children: [{ text: 'A wise quote.' }],
+        children: [{text: 'A wise quote.'}],
     },
     {
         type: 'paragraph',
-        children: [{ text: 'Try it out for yourself!' }],
+        children: [{text: 'Try it out for yourself!'}],
     },
 ]
 
